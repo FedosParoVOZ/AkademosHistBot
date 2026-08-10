@@ -69,17 +69,18 @@ async def check_subscribe(user_id: int) -> bool:
 # ============================================
 def get_course_keyboard():
     """Кнопка с ссылкой на курс (зелёная)."""
-    return InlineKeyboardMarkup(inline_keyboard=[
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="Перейти к курсу",
             url=COURSE_LINK,
             style="success"
         )]
     ])
+    return keyboard
 
 def get_subscribe_keyboard():
-    """Кнопки подписки на оба канала (синие)."""
-    return InlineKeyboardMarkup(inline_keyboard=[
+    """Три синие кнопки: две для подписки на каналы и одна для проверки."""
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="Подписаться на канал по истории",
             url=CHANNEL_LINK_1,
@@ -96,16 +97,18 @@ def get_subscribe_keyboard():
             style="primary"
         )]
     ])
+    return keyboard
 
 def get_main_keyboard():
     """Главное меню с кнопкой курса."""
-    return InlineKeyboardMarkup(inline_keyboard=[
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
             text="Летний курс ко всош и перечням",
             callback_data="course_summer",
             style="success"
         )]
     ])
+    return keyboard
 
 # ============================================
 # КОМАНДА /start
