@@ -19,7 +19,6 @@ COURSE_LINK = "https://akademos.zenclass.ru/public/course/39fa7b7f-f00b-4878-b04
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# ======= ПРОВЕРКА ПОДПИСКИ =======
 async def check_sub(user_id):
     try:
         m1 = await bot.get_chat_member(CHANNEL_ID_1, user_id)
@@ -29,7 +28,7 @@ async def check_sub(user_id):
     except:
         return False
 
-# ======= КНОПКИ =======
+# ========== КНОПКИ (БЕЗ СТИЛЕЙ!) ==========
 def green_course():
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Летний курс ко всош и перечням", callback_data="course")]
@@ -47,7 +46,6 @@ def green_go():
         [InlineKeyboardButton(text="Перейти к курсу", url=COURSE_LINK)]
     ])
 
-# ======= /start =======
 @dp.message(Command("start"))
 async def start(msg: types.Message):
     await msg.answer(
@@ -56,7 +54,6 @@ async def start(msg: types.Message):
     )
     await msg.answer("Выберите курс:", reply_markup=green_course())
 
-# ======= КНОПКИ =======
 @dp.callback_query()
 async def click(call: types.CallbackQuery):
     uid = call.from_user.id
@@ -88,7 +85,6 @@ async def click(call: types.CallbackQuery):
             )
         return
 
-# ======= ЗАПУСК =======
 async def main():
     print("🤖 БОТ ЗАПУЩЕН")
     print(f"Канал 1: {CHANNEL_LINK_1}")
@@ -96,4 +92,4 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main())            
