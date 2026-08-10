@@ -28,7 +28,6 @@ async def check_sub(user_id):
     except:
         return False
 
-# ========== КНОПКИ (БЕЗ СТИЛЕЙ!) ==========
 def green_course():
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="Летний курс ко всош и перечням", callback_data="course")]
@@ -92,4 +91,4 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    asyncio.run(main())            
+    asyncio.run(main())
