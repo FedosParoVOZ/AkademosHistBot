@@ -28,22 +28,45 @@ async def check_sub(user_id):
     except:
         return False
 
-# ========== КНОПКИ (БЕЗ СТИЛЕЙ!) ==========
+# ========== КНОПКИ С ЦВЕТАМИ ==========
 def green_course():
+    """Зелёная кнопка с курсом"""
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Летний курс ко ВсОШ и перечням", callback_data="course")]
+        [InlineKeyboardButton(
+            text="Летний курс ко всош и перечням",
+            callback_data="course",
+            style="success"  # 🟢 ЗЕЛЁНЫЙ
+        )]
     ])
 
 def blue_subscribe():
+    """Три синие кнопки: две подписки + проверка"""
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Подписаться на канал по истории", url=CHANNEL_LINK_1)],
-        [InlineKeyboardButton(text="Подписаться на канал Академос", url=CHANNEL_LINK_2)],
-        [InlineKeyboardButton(text="Проверить подписку", callback_data="check")]
+        [InlineKeyboardButton(
+            text="Подписаться на канал по истории",
+            url=CHANNEL_LINK_1,
+            style="primary"  # 🔵 СИНИЙ
+        )],
+        [InlineKeyboardButton(
+            text="Подписаться на канал Академос",
+            url=CHANNEL_LINK_2,
+            style="primary"  # 🔵 СИНИЙ
+        )],
+        [InlineKeyboardButton(
+            text="Проверить подписку",
+            callback_data="check",
+            style="primary"  # 🔵 СИНИЙ
+        )]
     ])
 
 def green_go():
+    """Зелёная кнопка со ссылкой на курс"""
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Перейти к курсу", url=COURSE_LINK)]
+        [InlineKeyboardButton(
+            text="Перейти к курсу",
+            url=COURSE_LINK,
+            style="success"  # 🟢 ЗЕЛЁНЫЙ
+        )]
     ])
 
 @dp.message(Command("start"))
