@@ -78,11 +78,16 @@ def get_course_keyboard():
     ])
 
 def get_subscribe_keyboard():
-    """Кнопки подписки (синие)."""
+    """Кнопки подписки на оба канала (синие)."""
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="Подписаться на каналы",
+            text="Подписаться на канал по истории",
             url=CHANNEL_LINK_1,
+            style="primary"
+        )],
+        [InlineKeyboardButton(
+            text="Подписаться на канал Академос",
+            url=CHANNEL_LINK_2,
             style="primary"
         )],
         [InlineKeyboardButton(
@@ -141,11 +146,8 @@ async def handle_callback(callback: types.CallbackQuery, state: FSMContext):
         else:
             # ❌ НЕ ПОДПИСАН ХОТЯ БЫ НА ОДИН
             await callback.message.edit_text(
-                "Для получения материалов нужно быть подписанным на наши каналы:\n"
-                f"• [Канал по истории]({CHANNEL_LINK_1})\n"
-                f"• [Канал Академос]({CHANNEL_LINK_2})",
-                reply_markup=get_subscribe_keyboard(),
-                disable_web_page_preview=True
+                "Для получения материалов нужно быть подписанным на наши каналы:",
+                reply_markup=get_subscribe_keyboard()
             )
             await callback.answer()
         return
