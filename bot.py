@@ -28,9 +28,10 @@ async def check_sub(user_id):
     except:
         return False
 
+# ========== КНОПКИ (БЕЗ СТИЛЕЙ!) ==========
 def green_course():
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Летний курс ко всош и перечням", callback_data="course")]
+        [InlineKeyboardButton(text="Летний курс ко ВсОШ и перечням", callback_data="course")]
     ])
 
 def blue_subscribe():
