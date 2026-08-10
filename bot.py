@@ -2,7 +2,7 @@ import asyncio
 import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
@@ -28,39 +28,44 @@ async def check_sub(user_id):
     except:
         return False
 
-# ========== КНОПКИ С ЦВЕТАМИ ЧЕРЕЗ WEBAPP ==========
+# ========== КНОПКИ ==========
 def green_course():
-    """Зелёная кнопка с курсом через WebApp"""
+    """Зелёная кнопка с курсом"""
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="🟢 Летний курс ко всош и перечням",
-            web_app=WebAppInfo(url=COURSE_LINK)
+            text="Летний курс ко всош и перечням",
+            callback_data="course",
+            style="success"  # 🟢 ЗЕЛЁНЫЙ
         )]
     ])
 
 def blue_subscribe():
-    """Синие кнопки подписки через WebApp"""
+    """Три синие кнопки: две подписки + проверка"""
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="🔵 Подписаться на канал по истории",
-            web_app=WebAppInfo(url=CHANNEL_LINK_1)
+            text="Подписаться на канал по истории",
+            url=CHANNEL_LINK_1,
+            style="primary"  # 🔵 СИНИЙ
         )],
         [InlineKeyboardButton(
-            text="🔵 Подписаться на канал Академос",
-            web_app=WebAppInfo(url=CHANNEL_LINK_2)
+            text="Подписаться на канал Академос",
+            url=CHANNEL_LINK_2,
+            style="primary"  # 🔵 СИНИЙ
         )],
         [InlineKeyboardButton(
-            text="🔵 Проверить подписку",
-            callback_data="check"
+            text="Проверить подписку",
+            callback_data="check",
+            style="primary"  # 🔵 СИНИЙ
         )]
     ])
 
 def green_go():
-    """Зелёная кнопка со ссылкой на курс через WebApp"""
+    """Зелёная кнопка со ссылкой на курс"""
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="🟢 Перейти к курсу",
-            web_app=WebAppInfo(url=COURSE_LINK)
+            text="Перейти к курсу",
+            url=COURSE_LINK,
+            style="success"  # 🟢 ЗЕЛЁНЫЙ
         )]
     ])
 
