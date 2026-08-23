@@ -68,7 +68,7 @@ def summer_course_buttons():
             style="primary"
         )],
         [InlineKeyboardButton(
-            text="Подписаться на НОВЫЙ КАНАЛ",
+            text="Подписаться на Петербургское право",
             url=CHANNEL_LINK_3,
             style="primary"
         )],
